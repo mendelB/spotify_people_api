@@ -1,4 +1,4 @@
-This project is live [here](http://git.heroku.com/spotify-people-api.git) 
+This project is live [here](http://spotify-people-api.herokuapp.com/) 
 
 # Installation:
 
