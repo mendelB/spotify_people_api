@@ -24,6 +24,16 @@ class PeopleController < ApplicationController
 	end
 
 	def update
+		person = Person.find_by(id: params[:id])
+		if person 
+			if person.update(person_params)
+				render json: person
+			else 
+				render :json => { :errors => person.errors.full_messages }, :status => 422 
+			end
+		else
+			head 404 
+		end
 	end
 
 	def destroy
