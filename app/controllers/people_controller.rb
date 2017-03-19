@@ -15,6 +15,12 @@ class PeopleController < ApplicationController
 	end
 
 	def show
+		person = Person.find_by(id: params[:id])
+		if person
+			render json: person
+		else
+			head 404 
+		end
 	end
 
 	def update
