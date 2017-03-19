@@ -6,6 +6,12 @@ class PeopleController < ApplicationController
 	end
 
 	def create
+		person = Person.create(person_params)
+		if person.save
+			render json: person
+		else
+			render :json => { :errors => person.errors.full_messages }, :status => 422 
+		end
 	end
 
 	def show
@@ -15,6 +21,11 @@ class PeopleController < ApplicationController
 	end
 
 	def destroy
+	end
+
+	private
+	def person_params
+		params.require(:person).permit(:name, :favorite_city)
 	end
 
 end
