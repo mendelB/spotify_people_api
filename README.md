@@ -1,10 +1,12 @@
+This project is live [here](http://git.heroku.com/spotify-people-api.git) 
+
 # Installation:
 
 ```
 $ git clone git@github.com:mendelB/spotify_people_api.git
 $ cd spotify_people_api
 $ bundle install
-$ rake db:migrate
+$ rake db:create db:migrate
 
 ```
 
