@@ -1,24 +1,21 @@
-# README
+# Installation:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+$ git clone git@github.com:mendelB/spotify_people_api.git
+$ cd spotify_people_api
+$ bundle install
+$ rake db:migrate
 
-Things you may want to cover:
+```
 
-* Ruby version
+# Run the app
 
-* System dependencies
+`$ rails s`
 
-* Configuration
+app will be served on localhost and can be visited at `http://localhost:3000`
 
-* Database creation
+# Routes
 
-* Database initialization
+To see all available routes - from terminal run
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`$ rake routes`
