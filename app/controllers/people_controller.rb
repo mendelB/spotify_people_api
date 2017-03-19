@@ -1,54 +1,38 @@
 class PeopleController < ApplicationController
+	before_action :set_person, only: [:show, :update, :destroy]
+
 
 	def index
 		people = Person.all
-		render json: people
+		json_response(people)
 	end
 
 	def create
-		person = Person.create(person_params)
-		if person.save
-			render json: person
-		else
-			render :json => { :errors => person.errors.full_messages }, :status => 422 
-		end
+		person = Person.create!(person_params)
+		json_response(person, :created)
 	end
 
 	def show
-		person = Person.find_by(id: params[:id])
-		if person
-			render json: person
-		else
-			head 404 
-		end
+		json_response(@person)
 	end
 
 	def update
-		person = Person.find_by(id: params[:id])
-		if person 
-			if person.update(person_params)
-				render json: person
-			else 
-				render :json => { :errors => person.errors.full_messages }, :status => 422 
-			end
-		else
-			head 404 
-		end
+		@person.update(person_params)
+		head :no_content
 	end
 
 	def destroy
-		person = Person.find_by(id: params[:id])
-		if person
-			person.destroy
-			head :ok
-		else
-			head 404
-		end
+		@person.destroy
+		head :no_content
 	end
 
 	private
 	def person_params
 		params.require(:person).permit(:name, :favorite_city)
 	end
+
+	def set_person
+    	@person = Person.find(params[:id])
+  	end
 
 end
