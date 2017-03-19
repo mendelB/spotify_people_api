@@ -37,6 +37,13 @@ class PeopleController < ApplicationController
 	end
 
 	def destroy
+		person = Person.find_by(id: params[:id])
+		if person
+			person.destroy
+			head :ok
+		else
+			head 404
+		end
 	end
 
 	private
