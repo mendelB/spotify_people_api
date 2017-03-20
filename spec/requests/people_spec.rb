@@ -89,11 +89,11 @@ RSpec.describe 'People API', type: :request do
       before { put "/people/#{person_id}", params: valid_attributes }
 
       it 'updates the record' do
-        expect(response.body).to be_empty
+        expect(response.body).to eq(person_id.to_s)
       end
 
-      it 'returns status code 204' do
-        expect(response).to have_http_status(204)
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
       end
     end
   end
