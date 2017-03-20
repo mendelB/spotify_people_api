@@ -18,7 +18,7 @@ class PeopleController < ApplicationController
 
 	def update
 		@person.update(person_params)
-		head :no_content
+		json_response(@person.id, 201)
 	end
 
 	def destroy
